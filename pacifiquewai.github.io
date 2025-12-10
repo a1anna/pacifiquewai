@@ -1,11 +1,40 @@
 index.html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacifique WAI • Traditional Polynesian Refreshments</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Hello World</h1>
-  <p>This is my GitHub website!</p>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">PACIFIQUE WAI</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Our Story</a>
+            <a href="#">Drinks</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your WAI</h1>
+            <p>Traditional Polynesian drinks reborn with modern flavor innovation.</p>
+            <button class="cta-button">Taste the Culture</button>
+        </div>
+        <div class="pineapple"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 Pacifique WAI • Crafted in the Pacific
+    </footer>
+
 </body>
 </html>
+
