@@ -1,1 +1,134 @@
+/* -------------------------
+   BRAND COLORS
+------------------------- */
+:root {
+    --pacific-blue: #005EB8; /* PMS 300C Hex Equivalent */
+    --pineapple-yellow: #FFD300;
+    --white: #FFFFFF;
+    --dark: #0A0A0A;
+    --font-main: 'Trebuchet MS', 'Segoe UI', sans-serif;
+}
+
+/* -------------------------
+   GLOBAL STYLES
+------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* -------------------------
+   NAVBAR
+------------------------- */
+.navbar {
+    width: 100%;
+    background-color: var(--pacific-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.navbar .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--white);
+    letter-spacing: 2px;
+}
+
+.navbar nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.navbar nav a:hover {
+    color: var(--pineapple-yellow);
+    transition: 0.3s;
+}
+
+/* -------------------------
+   HERO SECTION
+------------------------- */
+.hero {
+    height: 90vh;
+    background: var(--pacific-blue);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 45%;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: var(--pineapple-yellow);
+    border: none;
+    padding: 1rem 2.5rem;
+    color: var(--dark);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+/* -------------------------
+   PINEAPPLE ACCENT GRAPHIC
+------------------------- */
+.pineapple {
+    width: 350px;
+    height: 350px;
+    background: var(--pineapple-yellow);
+    border-radius: 50% 50% 0 50%;
+    position: absolute;
+    right: 8%;
+    bottom: 8%;
+    box-shadow: 0 0 50px rgba(255,211,0,0.5);
+    transform: rotate(25deg);
+}
+
+/* -------------------------
+   FOOTER
+------------------------- */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    backgroun
 
