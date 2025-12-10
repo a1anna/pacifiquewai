@@ -2,14 +2,14 @@
    BRAND COLORS
 ------------------------- */
 :root {
+   :root {
     --pacific-blue: #005EB8; /* PMS 300C Hex Equivalent */
-    --pineapple-yellow: #FFD300;
+    --pineapple-yellow: #FAD645; /* softer pineapple gold */
     --white: #FFFFFF;
     --dark: #0A0A0A;
     --font-main: 'Trebuchet MS', 'Segoe UI', sans-serif;
 }
 
-}
 
 /* -------------------------
    GLOBAL STYLES
@@ -40,11 +40,11 @@ body {
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
-.navbar .logo {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: var(--white);
-    letter-spacing: 2px;
+.navbar .logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+
 }
 
 .navbar nav a {
