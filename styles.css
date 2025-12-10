@@ -60,6 +60,12 @@ body {
     transition: 0.3s;
 }
 
+   .navbar .logo img {
+    height: 55px; /* Adjust if needed */
+    width: auto;
+    display: block;
+}
+
 /* -------------------------
    HERO SECTION
 ------------------------- */
