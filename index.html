@@ -5,36 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacifique WAI • Find Your WAI</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Add Google Font for bold, inviting typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="ocean-scene">
-        
-        <!-- NAV OVERLAY -->
-        <header class="nav-overlay">
-            <div class="logo-png">
-                <img src="logo.png" alt="Pacifique WAI logo">
-            </div>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#story">Our Story</a>
-                <a href="#drinks">Drinks</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </header>
+    <!-- NAVIGATION BAR -->
+    <header class="nav-overlay">
+        <div class="logo-png">
+            <a href="#home"><img src="logo.png" alt="Pacifique WAI logo"></a>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#story">Our Story</a>
+            <a href="#drinks">Drinks</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-        <!-- HERO SCREEN -->
-        <main class="hero-screen" id="home">
-            
-            <!-- WAVES (3 layers - background) -->
+    <!-- HOME SECTION -->
+    <section class="ocean-scene" id="home">
+        <main class="hero-screen">
+            <!-- WAVES (3 layers) -->
             <div class="wave-layer wave-back-2"></div>
             <div class="wave-layer wave-back"></div>
             <div class="wave-layer wave-front"></div>
             
-            <!-- CONTENT IN FOREFRONT (above waves) -->
+            <!-- HERO CONTENT -->
             <div class="hero-content">
                 <img src="logo.png" class="hero-logo" alt="Pacifique WAI logo">
                 <h1>Find Your WAI</h1>
@@ -42,13 +39,125 @@
                 <button class="cta-button" onclick="document.querySelector('#story').scrollIntoView({behavior: 'smooth'})">Enter the Lagoon</button>
             </div>
             
-            <!-- SAND STRIP (background beach) -->
-            <section class="sand-strip"></section>
+            <!-- SAND BACKGROUND -->
+            <div class="sand-strip"></div>
         </main>
-    </div>
+    </section>
 
-    <footer id="contact">
-        © 2025 Pacifique WAI • Crafted in the Pacific
+    <!-- OUR STORY SECTION -->
+    <section class="content-section" id="story">
+        <div class="section-container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>Rooted in Tradition, Crafted for Today</h3>
+                    <p>Pacifique WAI was born from a deep love for cultures all across the Pacific.  Where every single island have their own unique, timeless traditions.  </p>
+                    
+                    <p>Our journey began in the islands of Samoa, where every sip tells a story of heritage, community, and the vibrant spirit of the Pacific. We've taken this beloved recipe and brought it to life for a new generation, honoring the past while embracing the future.</p>
+                    
+                    <p>From popup markets across Oahu to your table, we're sharing the taste of the islands—one bottle at a time. Follow our journey on Instagram to see where we'll be next!</p>
+                </div>
+                <div class="story-image">
+                    <img src="logo.png" alt="Pacifique WAI Story" class="section-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRINKS SECTION -->
+    <section class="content-section drinks-section" id="drinks">
+        <div class="section-container">
+            <h2 class="section-title">Our Drinks</h2>
+            <p class="section-subtitle">Traditional Polynesian refreshment, crafted with aloha</p>
+            <div class="drinks-grid">
+                <!-- Drink Card 1 -->
+                <div class="drink-card">
+                    <div class="drink-image">
+                        <img src="logo.png" alt="Original Vaifala">
+                    </div>
+                    <h3>Original Wai</h3>
+                    <p>The classic, the OG. Pineapple blended with creamy coconut, just like grandma use to make it. Sweet, refreshing, and filled with memories of simpler times.</p>
+                </div>
+
+                <!-- Drink Card 2 -->
+                <div class="drink-card">
+                    <div class="drink-image">
+                        <img src="logo.png" alt="Lava Burst">
+                    </div>
+                    <h3>Lava Burst</h3>
+                    <p>A modern twist. Pineapple blended with creamy coconut and a burst of strawberry for an island explosion that takes you arond the world in 80 seconds.</p>
+                </div>
+
+                <!-- Drink Card 3 -->
+                <div class="drink-card">
+                    <div class="drink-image">
+                        <img src="logo.png" alt="Island Refresher">
+                    </div>
+                    <h3>Mana Pressed</h3>
+                    <p>Our ALL natural line. Perfect for those hot Hawaiian days at the beach. Pure refreshment in every sip.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="content-section contact-section" id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Find Us</h3>
+                    <div class="contact-item">
+                        <p><strong>📍 Popup Markets</strong><br>
+                        Various locations across Oahu<br>
+                        Check our Instagram for weekly updates and locations!</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <p><strong>📧 Email</strong><br>
+                        <a href="mailto:tasteparadise@pacifiquewai.com">tasteparadise@pacifiquewai.com</a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <p><strong>📱 Follow Us</strong><br>
+                        <a href="https://instagram.com/pacifiquewai" target="_blank" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            @pacifiquewai
+                        </a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <p><strong>🛒 Order Online</strong><br>
+                        Coming Soon! Pre-order availability starting early 2026.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                    <p class="form-note">We'll get back to you within 24-48 hours!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Pacifique WAI • Crafted in the Pacific</p>
+        <div class="footer-social">
+            <a href="https://instagram.com/pacifiquewai" target="_blank" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+        </div>
     </footer>
 
     <!-- Smooth scroll script -->
