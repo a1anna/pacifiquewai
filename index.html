@@ -29,20 +29,21 @@
         <!-- HERO SCREEN -->
         <main class="hero-screen" id="home">
             
-            <!-- WAVES (3 layers for more realistic motion) -->
+            <!-- WAVES (3 layers - background) -->
             <div class="wave-layer wave-back-2"></div>
             <div class="wave-layer wave-back"></div>
             <div class="wave-layer wave-front"></div>
             
-            <!-- SAND + LOGO -->
-            <section class="sand-strip">
-                <div class="sand-content">
-                    <img src="logo.png" class="sand-logo" alt="Pacifique WAI sand logo">
-                    <h1>Find Your WAI</h1>
-                    <p>Waves roll in, stories roll out. Traditional Polynesian drinks, crafted for a new tide.</p>
-                    <button class="cta-button" onclick="document.querySelector('#story').scrollIntoView({behavior: 'smooth'})">Enter the Lagoon</button>
-                </div>
-            </section>
+            <!-- CONTENT IN FOREFRONT (above waves) -->
+            <div class="hero-content">
+                <img src="logo.png" class="hero-logo" alt="Pacifique WAI logo">
+                <h1>Find Your WAI</h1>
+                <p>Waves roll in, stories roll out. Traditional Polynesian drinks, crafted for a new tide.</p>
+                <button class="cta-button" onclick="document.querySelector('#story').scrollIntoView({behavior: 'smooth'})">Enter the Lagoon</button>
+            </div>
+            
+            <!-- SAND STRIP (background beach) -->
+            <section class="sand-strip"></section>
         </main>
     </div>
 
