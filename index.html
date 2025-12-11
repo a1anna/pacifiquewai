@@ -1,41 +1,50 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacifique WAI • Traditional Polynesian Refreshments</title>
+    <title>Pacifique WAI • Find Your WAI</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="ocean-scene">
 
-    <!-- NAVBAR -->
-   <header class="navbar">
-    <div class="logo.png">PACIFIQUE WAI</div>
+        <!-- NAV OVERLAY -->
+        <header class="nav-overlay">
+            <div class="logo">
+                <img src="logo.png" alt="Pacifique WAI logo">
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#story">Our Story</a>
+                <a href="#drinks">Drinks</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Our Story</a>
-        <a href="#">Drinks</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+        <!-- HERO SCREEN -->
+        <main class="hero-screen" id="home">
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Find Your WAI</h1>
-            <p>Traditional Polynesian drinks reborn with modern flavor innovation.</p>
-            <button class="cta-button">Taste the Culture</button>
-        </div>
-        <div class="pineapple"></div>
-    </section>
+            <!-- WAVES -->
+            <div class="wave-layer wave-back"></div>
+            <div class="wave-layer wave-front"></div>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2025 Pacifique WAI • Crafted in the Pacific
-    </footer>
+            <!-- SAND + LOGO -->
+            <section class="sand-strip">
+                <div class="sand-content">
+                    <img src="logo.png" class="sand-logo" alt="Pacifique WAI sand logo">
+                    <h1>Find Your WAI</h1>
+                    <p>Waves roll in, stories roll out. Traditional Polynesian drinks, crafted for a new tide.</p>
+                    <button class="cta-button">Enter the Lagoon</button>
+                </div>
+            </section>
 
+        </main>
+
+        <footer id="contact">
+            © 2025 Pacifique WAI • Crafted in the Pacific
+        </footer>
+
+    </div>
 </body>
 </html>
-
