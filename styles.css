@@ -2,15 +2,32 @@
    BRAND COLORS & FONTS
 ------------------------- */
 :root {
-    --pacific-blue: #005EB8;
-    --pacific-deep: #003b73;
-    --sky-blue: #4EA9FF;
-    --pineapple-yellow: #FAD645;
-    --sand: #F4E1B0;
-    --dark: #0A0A0A;
-    --white: #FFFFFF;
-    --font-heading: 'Montserrat', 'Arial Black', sans-serif;
+    --font-heading: 'Playfair Display', Georgia, serif;
     --font-main: 'Poppins', 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;  /* Bigger for more impact */
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    text-shadow: 4px 4px 12px rgba(0,0,0,0.9);
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    font-style: italic;  /* Adds elegance */
+}
+
 }
 
 /* -------------------------
@@ -318,6 +335,51 @@ footer {
     color: rgba(255,255,255,0.9);
     background: rgba(0,0,0,0.5);
 }
+/* -------------------------
+   CONTENT SECTIONS
+------------------------- */
+.content-section {
+    padding: 5rem 2rem;
+    background: var(--white);
+    color: var(--dark);
+}
+
+.content-section:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--pacific-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+/* -------------------------
+   OUR STORY SECTION
+------------------------- */
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items:
 
 /* -------------------------
    RESPONSIVE TWEAKS
