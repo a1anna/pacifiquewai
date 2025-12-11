@@ -9,7 +9,6 @@
     --sand: #F4E1B0;
     --dark: #0A0A0A;
     --white: #FFFFFF;
-    /* Updated to bold, inviting fonts */
     --font-heading: 'Montserrat', 'Arial Black', sans-serif;
     --font-main: 'Poppins', 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
 }
@@ -54,14 +53,14 @@ body {
 }
 
 /* -------------------------
-   NAVBAR OVERLAY
+   NAVBAR OVERLAY - ENLARGED LOGO
 ------------------------- */
 .nav-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    padding: 1.2rem 3rem;
+    padding: 1.5rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,9 +70,9 @@ body {
 }
 
 .logo-png img {
-    height: 60px;
+    height: 85px; /* ENLARGED from 60px */
     width: auto;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 3px 10px rgba(0,0,0,0.6));
     transition: transform 0.3s ease;
 }
 
@@ -120,11 +119,105 @@ body {
     height: 100vh;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* -------------------------
-   WAVES - 3 LAYERS
-   Creates rolling effect that reveals logo
+   HERO CONTENT - FOREFRONT
+   This sits ABOVE the waves
+------------------------- */
+.hero-content {
+    position: relative;
+    z-index: 10; /* Above waves (z-index 2-4) */
+    text-align: center;
+    max-width: 650px;
+    padding: 2rem;
+    color: var(--white);
+    animation: fadeInContent 1.5s ease-in-out;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-logo {
+    height: 140px;
+    width: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 6px 20px rgba(0,0,0,0.7));
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+/* -------------------------
+   CTA BUTTON
+------------------------- */
+.cta-button {
+    background: var(--pineapple-yellow);
+    border: none;
+    padding: 1.1rem 3.2rem;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #3b2d1a;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    background: #ffe06a;
+}
+
+.cta-button:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* -------------------------
+   WAVES - BACKGROUND LAYERS
+   These flow BEHIND the content
 ------------------------- */
 .wave-layer {
     position: absolute;
@@ -164,7 +257,7 @@ body {
     z-index: 4;
 }
 
-/* Wave animations - different timing creates natural rolling effect */
+/* Wave animations */
 @keyframes waveRoll1 {
     0%, 100% {
         bottom: 20%;
@@ -199,7 +292,7 @@ body {
 }
 
 /* -------------------------
-   SAND STRIP WITH LOGO
+   SAND STRIP - BACKGROUND
 ------------------------- */
 .sand-strip {
     position: absolute;
@@ -209,103 +302,7 @@ body {
     height: 45%;
     background: radial-gradient(circle at top, #f8e9c6 0%, var(--sand) 55%, #e0c792 100%);
     box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 2.5rem;
-    z-index: 1;
-}
-
-.sand-content {
-    text-align: center;
-    max-width: 550px;
-    color: #3b2d1a;
-    padding: 0 2rem;
-}
-
-/* LOGO REVEAL EFFECT - Synced with waves */
-.sand-logo {
-    height: 120px;
-    width: auto;
-    margin-bottom: 1.5rem;
-    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
-    animation: logoReveal 8s ease-in-out infinite;
-}
-
-@keyframes logoReveal {
-    0% {
-        opacity: 0.3;
-        transform: translateY(15px) scale(0.95);
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) blur(2px);
-    }
-    25% {
-        opacity: 0.5;
-        transform: translateY(10px) scale(0.97);
-        filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35)) blur(1px);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4)) blur(0px);
-    }
-    75% {
-        opacity: 0.8;
-        transform: translateY(8px) scale(0.98);
-        filter: drop-shadow(0 3px 7px rgba(0,0,0,0.35)) blur(0.5px);
-    }
-    100% {
-        opacity: 0.3;
-        transform: translateY(15px) scale(0.95);
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) blur(2px);
-    }
-}
-
-.sand-content h1 {
-    font-family: var(--font-heading);
-    font-size: 2.8rem;
-    font-weight: 900;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-    color: #2c2115;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.sand-content p {
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 1.6;
-    margin-bottom: 1.8rem;
-    color: #443321;
-}
-
-/* -------------------------
-   CTA BUTTON
-------------------------- */
-.cta-button {
-    background: var(--pineapple-yellow);
-    border: none;
-    padding: 1rem 3rem;
-    border-radius: 999px;
-    font-size: 1rem;
-    font-weight: 800;
-    font-family: var(--font-heading);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: #3b2d1a;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.6);
-    background: #ffe06a;
-}
-
-.cta-button:active {
-    transform: translateY(-2px) scale(1.02);
+    z-index: 1; /* Behind waves */
 }
 
 /* -------------------------
@@ -331,7 +328,7 @@ footer {
     }
 
     .logo-png img {
-        height: 50px;
+        height: 65px;
     }
 
     .nav-overlay nav a {
@@ -339,20 +336,15 @@ footer {
         font-size: 0.85rem;
     }
 
-    .sand-strip {
-        height: 48%;
-        padding-top: 2rem;
+    .hero-logo {
+        height: 100px;
     }
 
-    .sand-logo {
-        height: 90px;
+    .hero-content h1 {
+        font-size: 2.5rem;
     }
 
-    .sand-content h1 {
-        font-size: 2rem;
-    }
-
-    .sand-content p {
+    .hero-content p {
         font-size: 1rem;
     }
 
@@ -369,6 +361,10 @@ footer {
         padding: 1rem;
     }
 
+    .logo-png img {
+        height: 55px;
+    }
+
     .nav-overlay nav {
         display: flex;
         flex-wrap: wrap;
@@ -380,4 +376,20 @@ footer {
         font-size: 0.75rem;
     }
 
-    .sand-strip {
+    .hero-logo {
+        height: 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .cta-button {
+        padding: 0.9rem 2.2rem;
+        font-size: 0.9rem;
+    }
+}
