@@ -2,14 +2,16 @@
    BRAND COLORS & FONTS
 ------------------------- */
 :root {
-    --pacific-blue: #005EB8;      /* PMS 300C */
+    --pacific-blue: #005EB8;
     --pacific-deep: #003b73;
     --sky-blue: #4EA9FF;
-    --pineapple-yellow: #FAD645;  /* softer pineapple gold */
+    --pineapple-yellow: #FAD645;
     --sand: #F4E1B0;
     --dark: #0A0A0A;
     --white: #FFFFFF;
-    --font-main: 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+    /* Updated to bold, inviting fonts */
+    --font-heading: 'Montserrat', 'Arial Black', sans-serif;
+    --font-main: 'Poppins', 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
 }
 
 /* -------------------------
@@ -19,6 +21,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 html, body {
@@ -51,49 +57,55 @@ body {
    NAVBAR OVERLAY
 ------------------------- */
 .nav-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    padding: 1.1rem 3rem;
+    padding: 1.2rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 20;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0));
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    backdrop-filter: blur(5px);
 }
 
-.logo img {
-   .sand-logo {
-    height: 160px; /* increase logo size */
+.logo-png img {
+    height: 60px;
     width: auto;
-    margin-bottom: 1.2rem;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
-    animation: logoReveal 7s ease-in-out infinite;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    transition: transform 0.3s ease;
 }
 
+.logo-png img:hover {
+    transform: scale(1.05);
 }
 
 .nav-overlay nav a {
     color: var(--white);
     text-decoration: none;
-    margin-left: 1.8rem;
-    font-size: 0.98rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
+    margin-left: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     position: relative;
+    transition: color 0.3s ease;
 }
 
 .nav-overlay nav a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -0.3rem;
+    bottom: -0.4rem;
     width: 0;
-    height: 2px;
+    height: 3px;
     background: var(--pineapple-yellow);
-    transition: width 0.25s ease;
+    transition: width 0.3s ease;
+}
+
+.nav-overlay nav a:hover {
+    color: var(--pineapple-yellow);
 }
 
 .nav-overlay nav a:hover::after {
@@ -111,48 +123,78 @@ body {
 }
 
 /* -------------------------
-   WAVES
-   Two layered shapes moving up/down & slightly sideways
+   WAVES - 3 LAYERS
+   Creates rolling effect that reveals logo
 ------------------------- */
 .wave-layer {
     position: absolute;
     left: -10%;
     width: 120%;
-    height: 28%;
-    background: rgba(0, 94, 184, 0.95);
-    bottom: 26%;
-    border-radius: 55% 55% 0 0;
+    background: rgba(0, 94, 184, 0.85);
+    border-radius: 60% 55% 0 0;
+    filter: drop-shadow(0 -8px 15px rgba(0,0,0,0.3));
+}
+
+/* Back wave - slowest, deepest */
+.wave-back-2 {
+    height: 35%;
+    bottom: 30%;
+    background: rgba(0, 50, 120, 0.75);
+    animation: waveRoll1 14s ease-in-out infinite;
     z-index: 2;
-    filter: drop-shadow(0 -12px 18px rgba(0,0,0,0.35));
-    animation: waveInOut 7s ease-in-out infinite alternate;
 }
 
+/* Middle wave */
 .wave-back {
-    background: rgba(0, 70, 145, 0.92);
     height: 32%;
-    bottom: 29%;
-    animation-duration: 11s;
-    animation-delay: -3s;
-    opacity: 0.9;
+    bottom: 28%;
+    background: rgba(0, 70, 145, 0.85);
+    animation: waveRoll2 10s ease-in-out infinite;
+    animation-delay: -2s;
+    z-index: 3;
 }
 
+/* Front wave - fastest */
 .wave-front {
-    opacity: 1;
+    height: 30%;
+    bottom: 26%;
+    background: rgba(0, 94, 184, 0.95);
+    animation: waveRoll3 8s ease-in-out infinite;
+    animation-delay: -4s;
+    z-index: 4;
 }
 
-/* Wave motion: “rolling” in (covering sand) and out (revealing logo) */
-@keyframes waveInOut {
-    0% {
-        bottom: 14%;
-        transform: translateX(0);
+/* Wave animations - different timing creates natural rolling effect */
+@keyframes waveRoll1 {
+    0%, 100% {
+        bottom: 20%;
+        transform: translateX(0) scaleY(1);
     }
-    40% {
-        bottom: 28%;
-        transform: translateX(5%);
+    50% {
+        bottom: 32%;
+        transform: translateX(4%) scaleY(1.1);
     }
-    100% {
+}
+
+@keyframes waveRoll2 {
+    0%, 100% {
         bottom: 18%;
-        transform: translateX(-6%);
+        transform: translateX(0) scaleY(1);
+    }
+    50% {
+        bottom: 30%;
+        transform: translateX(-3%) scaleY(1.08);
+    }
+}
+
+@keyframes waveRoll3 {
+    0%, 100% {
+        bottom: 15%;
+        transform: translateX(0) scaleY(1);
+    }
+    50% {
+        bottom: 28%;
+        transform: translateX(5%) scaleY(1.12);
     }
 }
 
@@ -164,66 +206,76 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    height: height: 45%; /* more room for logo + full story */
+    height: 45%;
     background: radial-gradient(circle at top, #f8e9c6 0%, var(--sand) 55%, #e0c792 100%);
-    box-shadow: 0 -10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding-top: 2.5rem;
-    z-index: 1; /* waves sit above this */
+    z-index: 1;
 }
 
 .sand-content {
     text-align: center;
-    max-width: 480px;
+    max-width: 550px;
     color: #3b2d1a;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
 }
 
-/* Logo “revealed” by the wave */
+/* LOGO REVEAL EFFECT - Synced with waves */
 .sand-logo {
-    height: 90px;
+    height: 120px;
     width: auto;
-    margin-bottom: 0.9rem;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
-    animation: logoReveal 7s ease-in-out infinite;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+    animation: logoReveal 8s ease-in-out infinite;
 }
 
-/* Subtle pulsing / reveal synced with wave movement */
 @keyframes logoReveal {
     0% {
-        opacity: 0.15;
+        opacity: 0.3;
+        transform: translateY(15px) scale(0.95);
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) blur(2px);
+    }
+    25% {
+        opacity: 0.5;
         transform: translateY(10px) scale(0.97);
+        filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35)) blur(1px);
     }
-    35% {
-        opacity: 0;
-    }
-    55% {
-        opacity: 0.55;
-        transform: translateY(3px) scale(0.99);
-    }
-    80% {
+    50% {
         opacity: 1;
         transform: translateY(0) scale(1);
+        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4)) blur(0px);
+    }
+    75% {
+        opacity: 0.8;
+        transform: translateY(8px) scale(0.98);
+        filter: drop-shadow(0 3px 7px rgba(0,0,0,0.35)) blur(0.5px);
     }
     100% {
-        opacity: 1;
+        opacity: 0.3;
+        transform: translateY(15px) scale(0.95);
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) blur(2px);
     }
 }
 
 .sand-content h1 {
-    font-size: 2rem;
-    letter-spacing: 0.12em;
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     color: #2c2115;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .sand-content p {
-    font-size: 0.98rem;
-    line-height: 1.5;
-    margin-bottom: 1.4rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
     color: #443321;
 }
 
@@ -233,22 +285,27 @@ body {
 .cta-button {
     background: var(--pineapple-yellow);
     border: none;
-    padding: 0.9rem 2.6rem;
+    padding: 1rem 3rem;
     border-radius: 999px;
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
     color: #3b2d1a;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.35);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.5);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.6);
     background: #ffe06a;
+}
+
+.cta-button:active {
+    transform: translateY(-2px) scale(1.02);
 }
 
 /* -------------------------
@@ -258,10 +315,11 @@ footer {
     position: relative;
     z-index: 5;
     text-align: center;
-    padding: 1rem;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.85);
-    background: rgba(0,0,0,0.4);
+    padding: 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.5);
 }
 
 /* -------------------------
@@ -269,37 +327,37 @@ footer {
 ------------------------- */
 @media (max-width: 900px) {
     .nav-overlay {
-        padding: 0.9rem 1.4rem;
+        padding: 1rem 1.5rem;
+    }
+
+    .logo-png img {
+        height: 50px;
     }
 
     .nav-overlay nav a {
-        margin-left: 1rem;
-        font-size: 0.8rem;
-    }
-
-    .logo img {
-        height: 46px;
+        margin-left: 1.2rem;
+        font-size: 0.85rem;
     }
 
     .sand-strip {
-        height: 38%;
+        height: 48%;
         padding-top: 2rem;
     }
 
     .sand-logo {
-        height: 72px;
+        height: 90px;
     }
 
     .sand-content h1 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     .sand-content p {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .wave-layer {
-        height: 46%;
+        height: 38%;
     }
 }
 
@@ -307,21 +365,19 @@ footer {
     .nav-overlay {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.7rem;
+        padding: 1rem;
+    }
+
+    .nav-overlay nav {
+        display: flex;
+        flex-wrap: wrap;
         gap: 0.5rem;
     }
 
     .nav-overlay nav a {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+        margin-left: 0;
         font-size: 0.75rem;
     }
 
     .sand-strip {
-        height: 42%;
-        padding-top: 1.5rem;
-    }
-
-    .sand-logo {
-        height: 64px;
-    }
-}
