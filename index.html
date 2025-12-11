@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacifique WAI • Find Your WAI</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Add Google Font for bold, inviting typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="ocean-scene">
-
+        
         <!-- NAV OVERLAY -->
         <header class="nav-overlay">
-            <div class="logo.png">
+            <div class="logo-png">
                 <img src="logo.png" alt="Pacifique WAI logo">
             </div>
             <nav>
@@ -24,27 +28,38 @@
 
         <!-- HERO SCREEN -->
         <main class="hero-screen" id="home">
-
-            <!-- WAVES -->
+            
+            <!-- WAVES (3 layers for more realistic motion) -->
+            <div class="wave-layer wave-back-2"></div>
             <div class="wave-layer wave-back"></div>
             <div class="wave-layer wave-front"></div>
-
+            
             <!-- SAND + LOGO -->
             <section class="sand-strip">
                 <div class="sand-content">
                     <img src="logo.png" class="sand-logo" alt="Pacifique WAI sand logo">
                     <h1>Find Your WAI</h1>
                     <p>Waves roll in, stories roll out. Traditional Polynesian drinks, crafted for a new tide.</p>
-                    <button class="cta-button">Enter the Lagoon</button>
+                    <button class="cta-button" onclick="document.querySelector('#story').scrollIntoView({behavior: 'smooth'})">Enter the Lagoon</button>
                 </div>
             </section>
-
         </main>
-
-        <footer id="contact">
-            © 2025 Pacifique WAI • Crafted in the Pacific
-        </footer>
-
     </div>
+
+    <footer id="contact">
+        © 2025 Pacifique WAI • Crafted in the Pacific
+    </footer>
+
+    <!-- Smooth scroll script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
