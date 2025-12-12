@@ -1,259 +1,78 @@
-/* -------------------------
-   BRAND COLORS & FONTS
-------------------------- */
-:root {
-    --pacific-blue: #005EB8;
-    --pacific-deep: #003b73;
-    --sky-blue: #4EA9FF;
-    --pineapple-yellow: #FAD645;
-    --sand: #F4E1B0;
-    --dark: #0A0A0A;
-    --white: #FFFFFF;
-    /* Handwritten style fonts */
-    --font-handwritten: 'Pacifico', cursive;
-    --font-heading: 'Dancing Script', cursive;
-    --font-main: 'Poppins', 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
-}
-
-/* -------------------------
-   GLOBAL RESET
-------------------------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-html, body {
-    height: 100%;
-}
-
-body {
-    font-family: var(--font-main);
-    background-color: var(--dark);
-    color: var(--white);
-}
-
-/* -------------------------
-   NAVIGATION BAR
-------------------------- */
-.nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0));
-    backdrop-filter: blur(5px);
-}
-
-.logo-png img {
-    height: 85px;
-    width: auto;
-    filter: drop-shadow(0 3px 10px rgba(0,0,0,0.6));
-    transition: transform 0.3s ease;
-}
-
-.logo-png img:hover {
-    transform: scale(1.05);
-}
-
-.nav-overlay nav a {
-    color: var(--white);
-    text-decoration: none;
-    margin-left: 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-overlay nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -0.4rem;
-    width: 0;
-    height: 3px;
-    background: var(--pineapple-yellow);
-    transition: width 0.3s ease;
-}
-
-.nav-overlay nav a:hover {
-    color: var(--pineapple-yellow);
-}
-
-.nav-overlay nav a:hover::after {
-    width: 100%;
-}
-
-/* -------------------------
-   OCEAN SCENE WRAPPER
-------------------------- */
-.ocean-scene {
-    min-height: 100vh;
-    position: relative;
-    background: linear-gradient(
-        to bottom,
-        #00132a 0%,
-        var(--pacific-deep) 30%,
-        var(--pacific-blue) 55%,
-        var(--sky-blue) 100%
-    );
-    overflow: hidden;
-}
-
-/* -------------------------
-   HERO SCREEN
-------------------------- */
-.hero-screen {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* -------------------------
-   HERO CONTENT - FOREFRONT
-   Text only, no large logo
-------------------------- */
-.hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    max-width: 800px;
-    padding: 2rem;
-    color: var(--white);
-    animation: fadeInContent 1.5s ease-in-out;
-}
-
-@keyframes fadeInContent {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-content h1 {
-    font-family: var(--font-handwritten);
-    font-size: 5.5rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    margin-bottom: 1.5rem;
-    color: var(--white);
-    text-shadow: 4px 4px 15px rgba(0,0,0,0.8);
-    line-height: 1.2;
-}
-
+/* Update hero content paragraph for MUCH larger text */
 .hero-content p {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 2.2rem;  /* INCREASED from 1.8rem - Much more readable! */
     font-weight: 700;
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 2.5rem;
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    color: rgba(255, 255, 255, 0.98);
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
 }
 
-/* -------------------------
-   CTA BUTTON
-------------------------- */
-.cta-button {
-    background: var(--pineapple-yellow);
-    border: none;
-    padding: 1.2rem 3.5rem;
-    border-radius: 999px;
-    font-size: 1.1rem;
+/* Update story section for better readability */
+.story-content {
+    display: block;  /* Changed from grid to remove image column */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.story-text h3 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;  /* INCREASED */
     font-weight: 700;
-    font-family: var(--font-main);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: #3b2d1a;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
+    color: var(--pacific-deep);
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-.cta-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-    background: #ffe06a;
+.story-text p {
+    font-size: 1.35rem;  /* INCREASED from 1.1rem */
+    line-height: 2;  /* More spacing */
+    margin-bottom: 1.8rem;
+    color: #333;
 }
 
-.cta-button:active {
-    transform: translateY(-2px) scale(1.02);
+/* Remove drink card images */
+.drink-image {
+    display: none;  /* Hides the logos */
 }
 
-/* -------------------------
-   WAVES - BACKGROUND LAYERS
-------------------------- */
-.wave-layer {
-    position: absolute;
-    left: -10%;
-    width: 120%;
-    background: rgba(0, 94, 184, 0.85);
-    border-radius: 60% 55% 0 0;
-    filter: drop-shadow(0 -8px 15px rgba(0,0,0,0.3));
+.drink-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.wave-back-2 {
-    height: 35%;
-    bottom: 30%;
-    background: rgba(0, 50, 120, 0.75);
-    animation: waveRoll1 14s ease-in-out infinite;
-    z-index: 2;
+.drink-card h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;  /* INCREASED */
+    font-weight: 700;
+    color: var(--pacific-blue);
+    margin-bottom: 1.5rem;
 }
 
-.wave-back {
-    height: 32%;
-    bottom: 28%;
-    background: rgba(0, 70, 145, 0.85);
-    animation: waveRoll2 10s ease-in-out infinite;
-    animation-delay: -2s;
-    z-index: 3;
+.drink-card p {
+    font-size: 1.2rem;  /* INCREASED */
+    line-height: 1.8;
+    color: #555;
 }
 
-.wave-front {
-    height: 30%;
-    bottom: 26%;
-    background: rgba(0, 94, 184, 0.95);
-    animation: waveRoll3 8s ease-in-out infinite;
-    animation-delay: -4s;
-    z-index: 4;
+/* Contact section larger text */
+.contact-info h3,
+.contact-form h3 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;  /* INCREASED */
+    font-weight: 700;
+    color: var(--pacific-deep);
+    margin-bottom: 2rem;
 }
 
-@keyframes waveRoll1 {
-    0%, 100% {
-        bottom: 20%;
-        transform: translateX(0) scaleY(1);
-    }
-    50% {
-        bottom: 32%;
-        transform: translateX(4%) scaleY(1.1);
-    }
+.contact-info p {
+    font-size: 1.25rem;  /* INCREASED */
+    line-height: 2;
+    margin-bottom: 1.8rem;
+    color: #333;
 }
-
-@keyframes waveRoll2 {
-    0%, 100% {
-        bottom: 18%;
-        transform: translateX(0) scaleY(1);
-    }
-    50% {
-        bottom: 30%;
