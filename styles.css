@@ -86,3 +86,142 @@ body {
   box-shadow: 0 18px 35px rgba(0, 216, 255, 0.45);
   background: linear-gradient(135deg, #00f0ff, #00c4c4);
 }
+
+/* style.css */
+
+/* Reset body */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #021824; /* deep ocean */
+  color: #ffffff;
+}
+
+/* Full-screen hero section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Logo as semi-transparent background */
+.overlay-logo {
+  position: absolute;
+  inset: 0;
+  background-image: url("images/pacifiquewai-logo.png"); /* update path */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.15;              /* controls how faint the logo is */
+  pointer-events: none;       /* clicks go through */
+  z-index: 0;
+}
+
+/* Foreground content */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 2rem 1.5rem;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.12), transparent);
+  border-radius: 1.5rem;
+}
+
+/* Bold, inviting heading */
+.content h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* Friendly subtext */
+.content p {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+  opacity: 0.95;
+  margin-bottom: 1.5rem;
+}
+
+/* Call-to-action button */
+.cta-button {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00d8ff, #00b3b3);
+  color: #021824;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 25px rgba(0, 216, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 35px rgba(0, 216, 255, 0.45);
+  background: linear-gradient(135deg, #00f0ff, #00c4c4);
+}
+.wave-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  height: 160px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Base wave style */
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.12); /* soft white wave */
+  border-radius: 100%;
+  filter: blur(4px);
+  animation: wave-move 12s linear infinite;
+}
+
+/* Layered waves with different speeds/opacities */
+.wave1 {
+  animation-duration: 18s;
+}
+
+.wave2 {
+  opacity: 0.18;
+  animation-duration: 24s;
+  animation-direction: reverse;
+}
+
+.wave3 {
+  opacity: 0.25;
+  animation-duration: 30s;
+}
+
+/* Wave keyframes */
+@keyframes wave-move {
+  0% {
+    transform: translateX(-25%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
