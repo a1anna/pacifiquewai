@@ -1,143 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacifique WAI • Find Your WAI</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Pacifique Wai</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- NAVIGATION BAR -->
-    <header class="nav-overlay">
-        <div class="logo-png">
-            <a href="#home"><img src="logo.png" alt="Pacifique WAI logo"></a>
-        </div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#story">Our Story</a>
-            <a href="#drinks">Drinks</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+  <div class="hero">
+    <div class="overlay-logo"></div>
 
-    <!-- HOME SECTION -->
-    <section class="ocean-scene" id="home">
-        <main class="hero-screen">
-            <!-- ANIMATED WAVES -->
-            <div class="wave-layer wave-back-2"></div>
-            <div class="wave-layer wave-back"></div>
-            <div class="wave-layer wave-front"></div>
-            
-            <!-- HERO CONTENT - Text only, NO LOGO -->
-            <div class="hero-content">
-                <h1>Find Your WAI</h1>
-                <p>Waves roll in, stories roll out. Traditional Polynesian drinks, crafted for a new tide.</p>
-                <button class="cta-button" onclick="document.querySelector('#story').scrollIntoView({behavior: 'smooth'})">Enter the Lagoon</button>
-            </div>
-            
-            <!-- SAND BACKGROUND -->
-            <div class="sand-strip"></div>
-        </main>
-    </section>
+    <div class="content">
+      <h1>Pacifique Wai</h1>
+      <p>Island-inspired beverages crafted with aloha.</p>
+      <a class="cta-button" href="#menu">View Our Drinks</a>
+    </div>
 
-    <!-- OUR STORY SECTION -->
-    <section class="content-section" id="story">
-        <div class="section-container">
-            <h2 class="section-title">Our Story</h2>
-            <div class="story-content">
-                <div class="story-text">
-                    <h3>Rooted in Tradition, Crafted for Today</h3>
-                    <p>Pacifique WAI was born from a deep love for Samoan culture and the timeless tradition of vaifala—a refreshing pineapple drink that has brought families together for generations.</p>
-                    
-                    <p>Our journey began in the islands of Samoa, where every sip tells a story of heritage, community, and the vibrant spirit of the Pacific. We've taken this beloved recipe and brought it to life for a new generation, honoring the past while embracing the future.</p>
-                    
-                    <p>From popup markets across Oahu to your table, we're sharing the taste of the islands—one bottle at a time.</p>
-                </div>
-                <!-- LOGO REMOVED FROM HERE -->
-            </div>
-        </div>
-    </section>
-
-    <!-- DRINKS SECTION -->
-    <section class="content-section drinks-section" id="drinks">
-        <div class="section-container">
-            <h2 class="section-title">Our Drinks</h2>
-            <p class="section-subtitle">Authentic Samoan refreshment, crafted with love</p>
-            <div class="drinks-grid">
-                <!-- LOGOS REMOVED FROM DRINK CARDS -->
-                <div class="drink-card">
-                    <h3>Original Vaifala</h3>
-                    <p>The classic. Fresh pineapple blended with creamy coconut, just like grandma made it.</p>
-                </div>
-
-                <div class="drink-card">
-                    <h3>Tropical Fusion</h3>
-                    <p>A modern twist. Pineapple meets mango and passionfruit for an island explosion.</p>
-                </div>
-
-                <div class="drink-card">
-                    <h3>Island Refresher</h3>
-                    <p>Light and crisp. Perfect for those hot Hawaiian days at the beach.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section class="content-section contact-section" id="contact">
-        <div class="section-container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Find Us</h3>
-                    <div class="contact-item">
-                        <p><strong>📍 Popup Markets</strong><br>
-                        Various locations across Oahu<br>
-                        Follow us on Instagram for weekly updates!</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <p><strong>📧 Email</strong><br>
-                        <a href="mailto:hello@pacifiquewai.com">hello@pacifiquewai.com</a></p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <p><strong>📱 Instagram</strong><br>
-                        <a href="https://instagram.com/pacifiquewai" target="_blank" class="social-link">@pacifiquewai</a></p>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form>
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                        <button type="submit" class="cta-button">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2025 Pacifique WAI • Crafted in the Pacific</p>
-    </footer>
-
-    <!-- Smooth scroll script -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <div class="wave-container">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+    </div>
+  </div>
 </body>
 </html>
