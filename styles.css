@@ -10,7 +10,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: #021824;
   color: #ffffff;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* HERO */
@@ -22,87 +22,102 @@ body {
   justify-content: center;
   overflow: hidden;
   padding: 2rem;
+  text-align: center;
 }
 
+/* LOGO BACKGROUND */
 .logo-overlay {
   position: absolute;
   inset: 0;
   background: url("logo.png") center / contain no-repeat;
-  opacity: 0.08;
+  opacity: 0.05;              /* softer */
+  filter: blur(2px);          /* dreamy */
+  z-index: 0;
   pointer-events: none;
 }
 
+/* HERO CONTENT */
 .hero-content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  max-width: 700px;
-  padding: 2.5rem 2rem;
-  background: rgba(255,255,255,0.06);
-  border-radius: 1.5rem;
-  backdrop-filter: blur(6px);
+  max-width: 720px;
+  padding: 3rem 2.5rem;
+  background: rgba(255,255,255,0.08);
+  border-radius: 1.75rem;
+  backdrop-filter: blur(8px);
 }
 
+/* LOGO */
 .logo {
-  width: 120px;
+  width: 140px;
+  margin-bottom: 1.5rem;
+}
+
+/* TITLE */
+.hero-content h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(3.2rem, 7vw, 4.2rem); /* BIGGER */
   margin-bottom: 1rem;
 }
 
-.hero-content h1 {
-  font-family: 'Pacifico', cursive;
-  font-size: clamp(2.8rem, 6vw, 3.6rem);
-  margin-bottom: 0.5rem;
-}
-
+/* TAGLINE */
 .hero-content p {
-  margin-bottom: 1.6rem;
+  font-size: 1.2rem;          /* BIGGER */
+  margin-bottom: 2rem;
   opacity: 0.95;
 }
 
+/* CTA */
 .cta {
   display: inline-block;
-  padding: 0.8rem 1.8rem;
+  padding: 1rem 2.2rem;
   background: #ffd84d;
   color: #021824;
   border-radius: 999px;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cta:hover {
-  box-shadow: 0 12px 25px rgba(255,216,77,0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(255,216,77,0.45);
 }
 
-/* WAVES */
+/* WAVES (FIXED + VISIBLE) */
 .waves {
   position: absolute;
-  bottom: -40px;
+  bottom: -20px;
+  left: 0;
   width: 100%;
-  height: 160px;
+  height: 200px;
   overflow: hidden;
+  z-index: 1;
 }
 
 .waves span {
   position: absolute;
   bottom: 0;
   width: 200%;
-  height: 120px;
-  background: rgba(255,255,255,0.12);
+  height: 140px;
+  background: rgba(255,255,255,0.18); /* brighter */
   border-radius: 100%;
   animation: wave 18s linear infinite;
 }
 
 .waves span:nth-child(2) {
-  opacity: 0.2;
+  opacity: 0.28;
   animation-duration: 26s;
   animation-direction: reverse;
 }
 
 .waves span:nth-child(3) {
-  opacity: 0.3;
+  opacity: 0.38;
   animation-duration: 34s;
 }
 
+/* WAVE MOTION */
 @keyframes wave {
   0% { transform: translateX(-25%); }
   50% { transform: translateX(0%); }
@@ -111,46 +126,49 @@ body {
 
 /* SECTIONS */
 .section {
-  padding: 4rem 1.5rem;
-  max-width: 900px;
+  padding: 5rem 1.5rem;
+  max-width: 960px;
   margin: 0 auto;
 }
 
+/* HEADINGS */
 .section h2 {
   font-family: 'Pacifico', cursive;
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.6rem;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 /* STORY */
 .story p {
-  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
   opacity: 0.95;
 }
 
 .signature {
   font-family: 'Pacifico', cursive;
   text-align: center;
-  margin-top: 1.5rem;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }
 
 /* MENU */
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
 }
 
 .drink {
-  background: rgba(255,255,255,0.05);
-  padding: 1.5rem;
-  border-radius: 1rem;
+  background: rgba(255,255,255,0.06);
+  padding: 2rem;
+  border-radius: 1.25rem;
 }
 
 .drink h3 {
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
   color: #ffd84d;
 }
 
@@ -158,28 +176,30 @@ body {
 .footer {
   background: #01131c;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 3rem 1.5rem;
 }
 
 .footer p {
   font-family: 'Pacifico', cursive;
-  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 .socials {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 0.75rem;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
 .socials a {
   color: #ffd84d;
+  font-size: 1rem;
   text-decoration: none;
   font-weight: 600;
 }
 
 .footer small {
   opacity: 0.6;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
