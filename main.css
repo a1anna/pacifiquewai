@@ -1,16 +1,13 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BASE */
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: #021824;
   color: #ffffff;
-  line-height: 1.8;
 }
 
 /* HERO */
@@ -20,75 +17,66 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  padding: 2rem;
   text-align: center;
+  overflow: hidden;
 }
 
-/* LOGO BACKGROUND */
+/* LOGO BACKGROUND (FIXED SIZE + SOFTER) */
 .logo-overlay {
   position: absolute;
   inset: 0;
-  background: url("logo.png") center / contain no-repeat;
-  opacity: 0.05;              /* softer */
-  filter: blur(2px);          /* dreamy */
+  background-image: url("logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;   /* THIS FIXES THE GIANT LOGO */
+  opacity: 0.06;
   z-index: 0;
   pointer-events: none;
 }
 
-/* HERO CONTENT */
+/* CONTENT */
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 720px;
+  max-width: 760px;
   padding: 3rem 2.5rem;
   background: rgba(255,255,255,0.08);
-  border-radius: 1.75rem;
+  border-radius: 2rem;
   backdrop-filter: blur(8px);
 }
 
-/* LOGO */
 .logo {
   width: 140px;
   margin-bottom: 1.5rem;
 }
 
-/* TITLE */
+/* TEXT SCALE FIX */
 .hero-content h1 {
   font-family: 'Pacifico', cursive;
-  font-size: clamp(3.2rem, 7vw, 4.2rem); /* BIGGER */
+  font-size: 4rem;
   margin-bottom: 1rem;
 }
 
-/* TAGLINE */
 .hero-content p {
-  font-size: 1.2rem;          /* BIGGER */
+  font-size: 1.25rem;
   margin-bottom: 2rem;
-  opacity: 0.95;
 }
 
 /* CTA */
 .cta {
   display: inline-block;
-  padding: 1rem 2.2rem;
+  padding: 1rem 2.5rem;
   background: #ffd84d;
   color: #021824;
   border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 30px rgba(255,216,77,0.45);
-}
-
-/* WAVES (FIXED + VISIBLE) */
+/* WAVES (RESTORED) */
 .waves {
   position: absolute;
-  bottom: -20px;
+  bottom: -30px;
   left: 0;
   width: 100%;
   height: 200px;
@@ -101,56 +89,40 @@ body {
   bottom: 0;
   width: 200%;
   height: 140px;
-  background: rgba(255,255,255,0.18); /* brighter */
+  background: rgba(255,255,255,0.22);
   border-radius: 100%;
-  animation: wave 18s linear infinite;
+  animation: wave 20s linear infinite;
 }
 
 .waves span:nth-child(2) {
-  opacity: 0.28;
-  animation-duration: 26s;
+  opacity: 0.3;
+  animation-duration: 28s;
   animation-direction: reverse;
 }
 
 .waves span:nth-child(3) {
-  opacity: 0.38;
-  animation-duration: 34s;
+  opacity: 0.4;
+  animation-duration: 36s;
 }
 
-/* WAVE MOTION */
 @keyframes wave {
   0% { transform: translateX(-25%); }
-  50% { transform: translateX(0%); }
+  50% { transform: translateX(0); }
   100% { transform: translateX(-25%); }
 }
 
 /* SECTIONS */
 .section {
-  padding: 5rem 1.5rem;
   max-width: 960px;
   margin: 0 auto;
+  padding: 5rem 2rem;
 }
 
-/* HEADINGS */
 .section h2 {
   font-family: 'Pacifico', cursive;
   font-size: 2.6rem;
   text-align: center;
   margin-bottom: 2rem;
-}
-
-/* STORY */
-.story p {
-  font-size: 1.1rem;
-  margin-bottom: 1.25rem;
-  opacity: 0.95;
-}
-
-.signature {
-  font-family: 'Pacifico', cursive;
-  text-align: center;
-  font-size: 1.5rem;
-  margin-top: 2rem;
 }
 
 /* MENU */
@@ -163,25 +135,24 @@ body {
 .drink {
   background: rgba(255,255,255,0.06);
   padding: 2rem;
-  border-radius: 1.25rem;
+  border-radius: 1.5rem;
 }
 
 .drink h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
   color: #ffd84d;
+  margin-bottom: 0.75rem;
 }
 
 /* FOOTER */
 .footer {
   background: #01131c;
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 3rem 2rem;
 }
 
 .footer p {
   font-family: 'Pacifico', cursive;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -194,12 +165,6 @@ body {
 
 .socials a {
   color: #ffd84d;
-  font-size: 1rem;
   text-decoration: none;
   font-weight: 600;
-}
-
-.footer small {
-  opacity: 0.6;
-  font-size: 0.85rem;
 }
