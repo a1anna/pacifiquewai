@@ -1,25 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pacifique Wai</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="hero">
-    <div class="overlay-logo"></div>
 
-    <div class="content">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="logo-overlay"></div>
+
+    <div class="hero-content">
+      <img src="logo.png" alt="Pacifique Wai Logo" class="logo" />
       <h1>Pacifique Wai</h1>
       <p>Island-inspired beverages crafted with aloha.</p>
-      <a class="cta-button" href="#menu">View Our Drinks</a>
+      <a href="#menu" class="cta">Find Your Wai</a>
     </div>
 
-    <div class="wave-container">
-      <div class="wave wave1"></div>
-      <div class="wave wave2"></div>
-      <div class="wave wave3"></div>
+    <div class="waves">
+      <span></span><span></span><span></span>
     </div>
-  </div>
+  </header>
+
+  <!-- OUR STORY -->
+  <section class="section story" id="story">
+    <h2>Our Story</h2>
+    <p>
+      Pacifique Wai was born from island roots, family gatherings, and the simple joy
+      of sharing something refreshing with people you love.
+    </p>
+    <p>
+      Inspired by Polynesian flavors and traditions, our drinks are crafted to slow
+      you down, cool you off, and remind you where you come from — or where you dream
+      of going.
+    </p>
+    <p class="signature">— Crafted with aloha</p>
+  </section>
+
+  <!-- MENU -->
+  <section class="section menu" id="menu">
+    <h2>The Wai Finder</h2>
+
+    <div class="menu-grid">
+
+      <div class="drink">
+        <h3>Classic Wai</h3>
+        <p>A smooth, lightly sweet island refresher inspired by traditional gatherings.</p>
+      </div>
+
+      <div class="drink">
+        <h3>Pineapple Wai</h3>
+        <p>Bright pineapple notes balanced with a cool, creamy finish.</p>
+      </div>
+
+      <div class="drink">
+        <h3>Coconut Cream Wai</h3>
+        <p>Rich, velvety coconut blended for a dessert-like island indulgence.</p>
+      </div>
+
+      <div class="drink">
+        <h3>Seasonal Wai</h3>
+        <p>Rotating flavors inspired by what’s fresh, local, and in season.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Follow the flow</p>
+
+    <div class="socials">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="TikTok">TikTok</a>
+      <a href="#" aria-label="YouTube">YouTube</a>
+    </div>
+
+    <small>© Pacifique Wai</small>
+  </footer>
+
 </body>
 </html>
