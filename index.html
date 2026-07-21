@@ -1,37 +1,50 @@
 from pathlib import Path
 from PIL import Image
-import shutil, zipfile, textwrap, os
+import shutil, zipfile
 
-root = Path("/mnt/data/Pacifique-Wai-Website-v1")
+source = Path("/mnt/data/a_full_page_website_mockup_screenshot_tropical.png")
+logo_source = Path("/mnt/data/logo(2).png")
+qr_source = Path("/mnt/data/IG QR CODE.png")
+
+root = Path("/mnt/data/Pacifique-Wai-Website-v2")
+if root.exists():
+    shutil.rmtree(root)
 assets = root / "assets"
-root.mkdir(exist_ok=True)
-assets.mkdir(exist_ok=True)
+assets.mkdir(parents=True, exist_ok=True)
 
-# Optimize and copy the user's actual logo and Instagram QR code.
-def optimize_png(src, dst, max_width):
-    img = Image.open(src).convert("RGBA")
-    if img.width > max_width:
-        ratio = max_width / img.width
-        img = img.resize((max_width, round(img.height * ratio)), Image.Resampling.LANCZOS)
-    img.save(dst, optimize=True)
+img = Image.open(source).convert("RGB")
+w, h = img.size
 
-optimize_png("/mnt/data/logo(2).png", assets / "pacifique-wai-logo.png", 1200)
-optimize_png("/mnt/data/IG QR CODE.png", assets / "instagram-qr.png", 900)
+# Section boundaries scaled to the actual 1024×1536 mockup.
+sections = {
+    "hero-artwork.jpg": (0, 52, w, 425),
+    "story-artwork.jpg": (0, 425, w, 630),
+    "flavors-artwork.jpg": (0, 630, w, 940),
+    "mana-artwork.jpg": (0, 940, w, 1195),
+    "events-artwork.jpg": (0, 1195, w, 1350),
+    "connect-artwork.jpg": (0, 1350, w, h),
+}
 
-index_html = r'''<!doctype html>
+for name, box in sections.items():
+    crop = img.crop(box)
+    crop.save(assets / name, quality=92, optimize=True)
+
+shutil.copy2(source, assets / "full-design-reference.png")
+shutil.copy2(logo_source, assets / "pacifique-wai-logo.png")
+shutil.copy2(qr_source, assets / "instagram-qr.png")
+
+index_html = """<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071f3d">
-  <meta name="description" content="Pacifique Wai — island-inspired drinks crafted to bring vacation mode a little closer.">
-  <meta property="og:title" content="Pacifique Wai | Find Your Wai">
-  <meta property="og:description" content="Bright island refreshment and cold-pressed Mana Made juices.">
+  <meta name="theme-color" content="#190f38">
+  <meta name="description" content="Pacifique Wai — island-inspired drinks, Mana Made cold-pressed juices, and event service on Oʻahu.">
   <title>Pacifique Wai | Find Your Wai</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
   <script src="script.js" defer></script>
 </head>
@@ -40,314 +53,71 @@ index_html = r'''<!doctype html>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" data-header>
-    <a class="header-logo" href="#home" aria-label="Pacifique Wai home">
+    <a class="brand" href="#home" aria-label="Pacifique Wai home">
       <img src="assets/pacifique-wai-logo.png" alt="Pacifique Wai">
     </a>
 
-    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation" data-menu-button>
+    <button class="menu-button" type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-menu-button>
       <span></span><span></span><span></span>
     </button>
 
-    <nav class="main-nav" id="main-navigation" aria-label="Main navigation" data-nav>
+    <nav class="site-nav" id="site-navigation" data-nav>
       <a href="#story">Our Story</a>
       <a href="#find-your-wai">Find Your Wai</a>
       <a href="#mana-made">Mana Made</a>
       <a href="#events">Events</a>
-      <a class="nav-cta" href="#connect">Connect</a>
+      <a class="nav-button" href="#connect">Connect</a>
     </nav>
   </header>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="sun-glow" aria-hidden="true"></div>
-
-      <img class="sky-logo" src="assets/pacifique-wai-logo.png" alt="" aria-hidden="true">
-
-      <div class="frigate-flock" aria-hidden="true">
-        <span class="bird bird-one"></span>
-        <span class="bird bird-two"></span>
-        <span class="bird bird-three"></span>
-        <span class="bird bird-four"></span>
-      </div>
-
-      <div class="cloud cloud-one" aria-hidden="true"></div>
-      <div class="cloud cloud-two" aria-hidden="true"></div>
-
-      <div class="hero-copy reveal">
-        <p class="kicker">Island refreshment • Oʻahu, Hawaiʻi</p>
-        <h1 id="hero-title">Find Your Wai</h1>
-        <p class="hero-script">Step out of the grind<br>and into island time.</p>
-        <div class="hero-actions">
-          <a class="button button-coral" href="#find-your-wai">Explore the flavors</a>
-          <a class="text-link" href="#story">Our story <span aria-hidden="true">↓</span></a>
-        </div>
-      </div>
-
-      <div class="island-silhouette" aria-hidden="true"></div>
-      <div class="distant-crab" aria-hidden="true"><span></span></div>
-
-      <div class="gardenia-cluster hero-gardenias" aria-hidden="true">
-        <span class="gardenia g1"></span>
-        <span class="gardenia g2"></span>
-        <span class="gardenia g3"></span>
-        <span class="leaf l1"></span>
-        <span class="leaf l2"></span>
-      </div>
-
-      <div class="ocean" aria-hidden="true">
-        <div class="ocean-shimmer"></div>
-        <div class="wave wave-far"></div>
-        <div class="wave wave-mid"></div>
-        <div class="wave wave-near"></div>
-      </div>
+    <section class="art-section hero-section" id="home" aria-label="Pacifique Wai introduction">
+      <img src="assets/hero-artwork.jpg"
+        alt="Tropical sunset over the ocean with the words Find Your Wai and Step out of the grind and into island time.">
+      <a class="hero-button" href="#find-your-wai">Enter vacation mode</a>
+      <a class="scroll-cue" href="#story" aria-label="Scroll to our story">⌄</a>
     </section>
 
-    <!-- STORY -->
-    <section class="story section" id="story" aria-labelledby="story-title">
-      <div class="grain" aria-hidden="true"></div>
-
-      <div class="section-shell story-layout">
-        <div class="story-heading reveal">
-          <p class="eyebrow">Our story</p>
-          <h2 id="story-title">Born from island roots.<em>Made for your moment of rest.</em></h2>
-          <div class="paint-stroke" aria-hidden="true"></div>
-        </div>
-
-        <div class="story-copy reveal">
-          <p class="lead">Pacifique Wai was created to feel like the first deep breath after a long season of nonstop work.</p>
-          <p>Our drinks are inspired by island flavors, family gatherings, warm sunsets, cool trade winds, and the small moments that remind us to slow down and enjoy where we are.</p>
-          <p>Every cup is crafted to bring a little more color, joy, and vacation energy into your day—whether you find us at a market, a celebration, or somewhere along your island journey.</p>
-          <blockquote>“Taste the rhythm of the islands.”</blockquote>
-        </div>
-      </div>
-
-      <div class="gardenia-cluster story-gardenias" aria-hidden="true">
-        <span class="gardenia g1"></span>
-        <span class="gardenia g2"></span>
-        <span class="leaf l1"></span>
-      </div>
+    <section class="art-section" id="story" aria-label="Our Story">
+      <img loading="lazy" src="assets/story-artwork.jpg"
+        alt="Our Story: Born from island roots. Made for your moment of rest.">
     </section>
 
-    <!-- FIND YOUR WAI -->
-    <section class="flavors section" id="find-your-wai" aria-labelledby="flavors-title">
-      <div class="section-shell">
-        <header class="section-heading centered reveal">
-          <p class="eyebrow">Bright island refreshment</p>
-          <h2 id="flavors-title">Find Your Wai</h2>
-          <p>Sweet, creamy island flavors made for slow sipping and good company.</p>
-        </header>
-
-        <div class="flavor-grid">
-          <article class="flavor-card reveal">
-            <div class="drink-visual">
-              <div class="cup cup-vai-fala">
-                <div class="lid"></div>
-                <div class="drink-shine"></div>
-                <div class="fruit-crown pineapple-crown" aria-hidden="true">✦</div>
-              </div>
-            </div>
-            <h3>Vai Fala</h3>
-            <p>Creamy pineapple flavor with a sunny tropical finish.</p>
-            <div class="size-row" aria-label="12 ounces 5 dollars, 16 ounces 7 dollars, 24 ounces 10 dollars">
-              <span>12oz <b>5</b></span><span>16oz <b>7</b></span><span>24oz <b>10</b></span>
-            </div>
-          </article>
-
-          <article class="flavor-card reveal">
-            <div class="drink-visual">
-              <div class="cup cup-lavaburst">
-                <div class="lid"></div>
-                <div class="drink-shine"></div>
-                <div class="fruit-dot strawberry-dot" aria-hidden="true"></div>
-              </div>
-            </div>
-            <h3>LavaBurst</h3>
-            <p>Creamy yellow with ribbons of bright strawberry pink.</p>
-            <div class="size-row" aria-label="12 ounces 5 dollars, 16 ounces 7 dollars, 24 ounces 10 dollars">
-              <span>12oz <b>5</b></span><span>16oz <b>7</b></span><span>24oz <b>10</b></span>
-            </div>
-          </article>
-
-          <article class="flavor-card reveal">
-            <div class="drink-visual">
-              <div class="cup cup-blueberry">
-                <div class="lid"></div>
-                <div class="drink-shine"></div>
-                <div class="berry-pair" aria-hidden="true"><i></i><i></i></div>
-              </div>
-            </div>
-            <h3>Blueberry Dream</h3>
-            <p>Creamy yellow with dreamy blueberry-blue swirls.</p>
-            <div class="size-row" aria-label="12 ounces 5 dollars, 16 ounces 7 dollars, 24 ounces 10 dollars">
-              <span>12oz <b>5</b></span><span>16oz <b>7</b></span><span>24oz <b>10</b></span>
-            </div>
-          </article>
-
-          <article class="flavor-card reveal">
-            <div class="drink-visual">
-              <div class="cup cup-orange">
-                <div class="lid"></div>
-                <div class="drink-shine"></div>
-                <div class="orange-slice" aria-hidden="true"></div>
-              </div>
-            </div>
-            <h3>Orange Hammah</h3>
-            <p>A creamy orange blend with a bright citrus personality.</p>
-            <div class="size-row" aria-label="12 ounces 5 dollars, 16 ounces 7 dollars, 24 ounces 10 dollars">
-              <span>12oz <b>5</b></span><span>16oz <b>7</b></span><span>24oz <b>10</b></span>
-            </div>
-          </article>
-
-          <article class="flavor-card reveal">
-            <div class="drink-visual">
-              <div class="cup cup-sublime">
-                <div class="lid"></div>
-                <div class="drink-shine"></div>
-                <div class="lime-slice" aria-hidden="true"></div>
-              </div>
-            </div>
-            <h3>SubLime</h3>
-            <p>Creamy light green with a cool, crisp lime finish.</p>
-            <div class="size-row" aria-label="12 ounces 5 dollars, 16 ounces 7 dollars, 24 ounces 10 dollars">
-              <span>12oz <b>5</b></span><span>16oz <b>7</b></span><span>24oz <b>10</b></span>
-            </div>
-          </article>
-        </div>
-
-        <p class="shake-note reveal"><span aria-hidden="true">↻</span> Give it a little hula before sipping.</p>
-      </div>
+    <section class="art-section" id="find-your-wai" aria-label="Find Your Wai menu">
+      <img loading="lazy" src="assets/flavors-artwork.jpg"
+        alt="Find Your Wai flavors: Vai Fala, LavaBurst, Blueberry Dream, Orange Hammah, and SubLime.">
     </section>
 
-    <!-- MANA MADE -->
-    <section class="mana section" id="mana-made" aria-labelledby="mana-title">
-      <div class="mana-light" aria-hidden="true"></div>
-      <div class="section-shell">
-        <header class="section-heading centered mana-heading reveal">
-          <p class="eyebrow">Cold-pressed with intention</p>
-          <h2 id="mana-title">Mana Made</h2>
-          <p>Whole fruits, vegetables, and roots—bottled with purpose.</p>
-        </header>
-
-        <div class="mana-grid">
-          <article class="mana-card reveal">
-            <div class="bottle-wrap">
-              <div class="bottle bottle-beet"><span class="bottle-cap"></span><span class="bottle-gloss"></span></div>
-            </div>
-            <div>
-              <p class="mana-mood">Deep • Earthy • Balanced</p>
-              <h3>Beets Bum Boogie</h3>
-              <p>Apples, pears, beets, blackberries, strawberries, ginger, and lime.</p>
-              <div class="ingredient-dots beet-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-          </article>
-
-          <article class="mana-card reveal">
-            <div class="bottle-wrap">
-              <div class="bottle bottle-sunset"><span class="bottle-cap"></span><span class="bottle-gloss"></span></div>
-            </div>
-            <div>
-              <p class="mana-mood">Bright • Colorful • Energizing</p>
-              <h3>Westside Sunset</h3>
-              <p>Apples, oranges, carrots, pears, pineapple, red cabbage, ginger, and lemon.</p>
-              <div class="ingredient-dots sunset-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-          </article>
-
-          <article class="mana-card reveal">
-            <div class="bottle-wrap">
-              <div class="bottle bottle-green"><span class="bottle-cap"></span><span class="bottle-gloss"></span></div>
-            </div>
-            <div>
-              <p class="mana-mood">Clean • Crisp • Replenishing</p>
-              <h3>Mana-Ade</h3>
-              <p>Apples, pears, cucumbers, pineapple, honeydew, lemon, lime, and ginger.</p>
-              <div class="ingredient-dots green-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-          </article>
-        </div>
-
-        <div class="mana-price reveal">
-          <span>Mana Made</span>
-          <strong>16oz&nbsp;&nbsp;8</strong>
-        </div>
-      </div>
-
-      <div class="gardenia-cluster mana-gardenias-left" aria-hidden="true">
-        <span class="gardenia g1"></span><span class="gardenia g2"></span><span class="leaf l1"></span>
-      </div>
-      <div class="gardenia-cluster mana-gardenias-right" aria-hidden="true">
-        <span class="gardenia g1"></span><span class="leaf l1"></span>
-      </div>
+    <section class="art-section" id="mana-made" aria-label="Mana Made cold-pressed juices">
+      <img loading="lazy" src="assets/mana-artwork.jpg"
+        alt="Mana Made cold-pressed juices: Beets Bum Boogie, Westside Sunset, and Mana-Ade.">
     </section>
 
-    <!-- EVENTS -->
-    <section class="events section" id="events" aria-labelledby="events-title">
-      <div class="section-shell events-layout">
-        <div class="events-copy reveal">
-          <p class="eyebrow">Bring the islands with you</p>
-          <h2 id="events-title">Make your gathering<em>taste like vacation.</em></h2>
-          <p>Pacifique Wai is available for pop-ups, markets, weddings, family celebrations, community events, private gatherings, and more.</p>
-          <a class="button button-coral" href="#connect">Invite Pacifique Wai</a>
-        </div>
-
-        <div class="event-grid">
-          <article class="event-card reveal">
-            <span class="event-icon" aria-hidden="true">▦</span>
-            <h3>Markets & Pop-Ups</h3>
-            <p>Refreshing drinks for community markets and island events.</p>
-          </article>
-          <article class="event-card reveal">
-            <span class="event-icon" aria-hidden="true">◇</span>
-            <h3>Weddings & Celebrations</h3>
-            <p>A tropical drink experience for the moments worth remembering.</p>
-          </article>
-          <article class="event-card reveal">
-            <span class="event-icon" aria-hidden="true">◉</span>
-            <h3>Community Events</h3>
-            <p>Bright flavors made for sharing with friends, family, and neighbors.</p>
-          </article>
-          <article class="event-card reveal">
-            <span class="event-icon" aria-hidden="true">✦</span>
-            <h3>Private Bookings</h3>
-            <p>Bring Pacifique Wai to your workplace, gathering, or special occasion.</p>
-          </article>
-        </div>
-      </div>
+    <section class="art-section" id="events" aria-label="Pacifique Wai events">
+      <img loading="lazy" src="assets/events-artwork.jpg"
+        alt="Pacifique Wai is available for markets, pop-ups, weddings, celebrations, community events, and private bookings.">
+      <a class="events-button" href="#connect">Invite Pacifique Wai</a>
     </section>
 
-    <!-- CONNECT -->
-    <section class="connect section" id="connect" aria-labelledby="connect-title">
-      <div class="connect-glow" aria-hidden="true"></div>
-
-      <div class="section-shell connect-layout">
-        <div class="connect-logo reveal">
-          <img src="assets/pacifique-wai-logo.png" alt="Pacifique Wai">
-        </div>
-
-        <div class="connect-copy reveal">
-          <p class="script-kicker">Stay in the flow.</p>
-          <h2 id="connect-title">Follow Pacifique Wai on Instagram</h2>
-          <p>Scan the QR code for pop-up locations, new flavors, behind-the-scenes moments, and island goodness.</p>
-          <a class="instagram-button" href="https://www.instagram.com/pacifiquewai/" target="_blank" rel="noopener noreferrer" aria-label="Follow Pacifique Wai on Instagram">
-            <span class="instagram-icon" aria-hidden="true"></span>
-            @pacifiquewai
-          </a>
-        </div>
-
-        <a class="qr-card reveal" href="https://www.instagram.com/pacifiquewai/" target="_blank" rel="noopener noreferrer" aria-label="Open Pacifique Wai Instagram">
-          <img src="assets/instagram-qr.png" alt="Instagram QR code for Pacifique Wai">
-          <span>Scan to follow</span>
-        </a>
-      </div>
-
-      <div class="footer-wave" aria-hidden="true"></div>
+    <section class="art-section connect-section" id="connect" aria-label="Follow Pacifique Wai on Instagram">
+      <img loading="lazy" src="assets/connect-artwork.jpg"
+        alt="Follow Pacifique Wai on Instagram at pacifiquewai.">
+      <a class="instagram-link"
+        href="https://www.instagram.com/pacifiquewai/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Follow @pacifiquewai
+      </a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© <span data-year></span> Pacifique Wai. Taste the rhythm of the islands.</p>
+  <footer class="screen-reader-footer">
+    <p>© <span data-year></span> Pacifique Wai. All rights reserved.</p>
   </footer>
 </body>
 </html>
-'''
+"""
